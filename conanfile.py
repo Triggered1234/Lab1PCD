@@ -5,9 +5,9 @@ class MyProjectConan(ConanFile):
     name = "test"
     version = "1.0"
     settings = "os", "compiler", "build_type", "arch"
-    requires = "argtable3/3.2.2", "popt/1.16"
     generators = "CMakeToolchain", "CMakeDeps"
     exports_sources = "src/*"
+    requires = "libcurl/7.80.0"
 
     def layout(self):
         cmake_layout(self)

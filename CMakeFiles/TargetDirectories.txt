@@ -1,0 +1,5 @@
+/usr/src/Lab1PCD/CMakeFiles/app1.dir
+/usr/src/Lab1PCD/CMakeFiles/app2.dir
+/usr/src/Lab1PCD/CMakeFiles/app3.dir
+/usr/src/Lab1PCD/CMakeFiles/edit_cache.dir
+/usr/src/Lab1PCD/CMakeFiles/rebuild_cache.dir

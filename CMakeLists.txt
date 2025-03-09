@@ -1,19 +1,27 @@
 cmake_minimum_required(VERSION 3.23)
 
-project(PCD_LAB1)
+# Specify compiler explicitly
+set(CMAKE_C_COMPILER /usr/bin/gcc)
+set(CMAKE_CXX_COMPILER /usr/bin/g++)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Release)
+# Set toolchain file (important for Conan)
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/build/Release/generators/conan_toolchain.cmake" CACHE FILEPATH "Toolchain file")
 
+# Define the project
+project(PCD_LAB1 C)
+find_package(CURL REQUIRED)
+
+# Set the C standard
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Ensure CMake knows where to find packages
+set(CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}/build/Release/generators")
+set(CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/build/Release/generators")
+
+# Define executable
 add_executable(app1 src/app1.c)
-set(CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/generators")
-# add_executable(app2, src/app2.c)
-# add_executable(app3, src/app3.c)
+add_executable(app2 src/app2.c)
+add_executable(app3 src/app3.c)
 
-# find_package(ZLIB REQUIRED)
-find_package(Argtable3 REQUIRED)
-find_package(popt REQUIRED)
-# message("FOUND zlib at ${ZLIB_INCLUDE_DIRS} with libs ${ZLIB_LIBRARIES}")
-
-# target_include_directories(app1 PUBLIC ${ZLIB_INCLUDE_DIRS})
-# target_link_libraries(app1 PUBLIC ${ZLIB_LIBRARIES})
-
-target_link_libraries(app1 PUBLIC argtable3::argtable3)
-target_link_libraries(app1 PRIVATE popt::popt)
+target_link_libraries(app3 PRIVATE CURL::libcurl)

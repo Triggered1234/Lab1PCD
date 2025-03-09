@@ -1,0 +1,1 @@
+/usr/bin/gcc -m64 -O3 -DNDEBUG -m64 CMakeFiles/app1.dir/src/app1.c.o -o Release/app1 
